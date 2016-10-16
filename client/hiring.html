@@ -1,0 +1,55 @@
+
+
+
+<template name="EditEmployee">
+    <h1>Edit Employee Information</h1>
+    {{#autoForm  collection="Employee" id="updateEmployeeForm" type="update" doc=this}}
+        <fieldset>
+            <legend>Employee Information</legend>
+            {{> afQuickField name='name' options=numSelectOptions noselect="true"}}
+            {{> afQuickField name='dob' type="bootstrap-datepicker" buttonClasses="glyphicon glyphicon-calendar"}}
+            {{> afQuickField name='birthPlace'}}
+            {{> afQuickField name='educationLevel'}}
+            {{> afQuickField name='addres' rows =4 label-style="color: green"}}
+            {{> afQuickField name='phone' placeholder="Phone Number Should start with 05"}}
+            {{> afQuickField name='contacts'}}
+
+
+        </fieldset>
+
+    {{/autoForm}}
+    <a class="btn" href="/">Back</a>
+</template>
+
+
+
+<template name="AddEmployee">
+    <h1>Add Emplyee Information</h1>
+    {{#autoForm collection="Employee" id="insertEmployeeForm" type="insert" }}
+
+        <fieldset>
+            <legend>Employee Information</legend>
+            {{> afQuickField name='name' options=numSelectOptions noselect="true"}}
+            {{> afQuickField name='dob' type="bootstrap-datepicker" buttonClasses="glyphicon glyphicon-calendar"}}
+            {{> afQuickField name='birthPlace'}}
+            {{> afQuickField name='educationLevel'}}
+            {{> afQuickField name='addres' rows =4 label-style="color: green"}}
+            {{> afQuickField name='phone' placeholder="Phone Number Should start with 05"}}
+            {{> afQuickField name='contacts'}}
+            {{> afQuickField name="fileId" type="cfs-file" collection="files"}}
+
+
+
+        </fieldset>
+        <button type="submit" class="btn btn-primary">Insert</button>
+
+    {{/autoForm}}
+
+    <ul>
+        {{#each employee}}
+            <li><a href="{{pathFor 'employee.show'}}">{{name}}</a> - {{phone}}</li>
+        {{/each}}
+    </ul>
+
+</template>
+
